@@ -1984,20 +1984,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3168280111822538641, guid: 5ce8effe1a2b2ae4ba04c297213b16da, type: 3}
-      propertyPath: hitEffect
-      value: 
-      objectReference: {fileID: 8750359777138825836, guid: 3fb799dc59af07149aef3f9bbb17cdb6, type: 3}
-    - target: {fileID: 3667688472613917345, guid: 5ce8effe1a2b2ae4ba04c297213b16da, type: 3}
-      propertyPath: down
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5293308144904239425, guid: 5ce8effe1a2b2ae4ba04c297213b16da, type: 3}
       propertyPath: m_Name
       value: OnlyWaddleDee_17 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7994132224081626007, guid: 5ce8effe1a2b2ae4ba04c297213b16da, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
