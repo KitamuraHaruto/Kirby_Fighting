@@ -20,6 +20,10 @@ public class AtackDamage : MonoBehaviour
     [SerializeField] float knockback = 3;
     public float GetKnockback() => knockback;
 
+    [Header("この攻撃をくらったものはダウンするかどうか")]
+    [SerializeField] bool down = false;
+    public bool Down() => down;
+
     [Header("この攻撃が当たったらこれを持っているスクリプトを破壊するか設定する")]
     [SerializeField] bool collisionDestroy = false;
 

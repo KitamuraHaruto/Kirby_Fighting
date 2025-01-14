@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public static class KitamuraMethod 
 {
-
-
     /// <summary>
     /// 引数のVecter3を向きを変えずに値を置き換える
     /// </summary>
@@ -27,19 +25,21 @@ public static class KitamuraMethod
     }
 
     /// <summary>
-    /// 引数のVecter3を向きを変えずに値を置き換える
+    /// 2点のベクトルの向きに引数の値を置き換える
     /// </summary>
     /// /// <returns>置き換わったベクトルが正規化された値</returns>
 
-    public static Vector3 VectorReplaced2D(Vector3 dir, float Value)
+    public static Vector3 VectorReplaced2D(Vector3 myPosition,Vector3 target, float Value = 1, bool Upper = false)
     {
-        Vector3 vector3 = dir;
-        if (dir.x > 0) { vector3.x = Value; }
-        if (dir.x < 0) { vector3.x = -Value; }
-        if (dir.y > 0) { vector3.y = Value; }
-        if (dir.y < 0) { vector3.y = -Value; }
-
-        return vector3.normalized;
+        Vector3 dir = Vector3.zero;
+        if (myPosition.x > target.x) { dir.x = Value; Debug.Log("プラス" + dir.x); }
+        if (myPosition.x < target.x) { dir.x = -Value; Debug.Log("マイナス" + dir.x); }
+        if (myPosition.y > target.y) { dir.y = Value; Debug.Log("プラス" + dir.y); }
+        if (myPosition.y < target.y && Upper == false) { dir.y = -Value; Debug.Log("マイナス" + dir.y); }
+        else if (Upper == true) { dir.y = Value; Debug.Log(dir.y); }
+      
+        //Debug.Log(dir.normalized);
+        return dir;
     }
 
 

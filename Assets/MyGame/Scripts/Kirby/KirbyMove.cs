@@ -1,34 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.SymbolStore;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-
-public enum KirbyState
+//C++だとクラス作らんでもnameSpaceでできる
+public class PlayerAnimString
 {
-    Idle, Walk, Jump_Start, Jump_Falling, Jump_FloatFalling,
-    Jump_StartFall,
-    Floating_Start,
-    While_floating,
-    Floating_End,
-    Jump_FloatEndFalling,
-    Jump_FloatJump,
-    DoorExit,
-    Dash,
-    Dash_Stop,
+    public const string idle = "Idle",walk = "Walk";
 }
 
 [RequireComponent(typeof(StopWatch))]
-
-public class KirbyMove : MonoBehaviour
+public partial class KirbyMove : MonoBehaviour
 {
     private GameObject player;
     private Transform playerTf;
     private Animator animator;
     private AudioSource AS ;
+
+    private ControlList controlList;
+    
 
     bool DashFrag;
     bool isDash = false;
@@ -76,7 +67,8 @@ public class KirbyMove : MonoBehaviour
     LayerMask wall;
 
     private Rigidbody2D rb;
-    private TrailRenderer tl;
+    private HitableOBJ ho;
+
     float moveX;
     bool floating = false;
     public bool GetFloating() => floating; 
@@ -95,69 +87,19 @@ public class KirbyMove : MonoBehaviour
 
     float tempVeloisityY, tempVelisityX;
 
-    //void Anim_Walk() => animator.SetBool("Walk", isWalking);
-    //void Anim_Walk() => animator.Play("Walk");
-
-    /// <summary>　必要に応じてアニメーションを再生させる関数　 </summary>
-    /// <param name="animName">アニメーションコントローラーのクリップ名</param>
-    /// <param name="enforcementPlay"> trueで強制的に最初から再生させる</param>
-    void Anim_Action(string animName, bool enforcementPlay = false)
-    {
-        //AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorClipInfo clipInfo = animator.GetCurrentAnimatorClipInfo(0)[0];
-        //[0]は一個分なので配列でない
-        string clipName = clipInfo.clip.name;
-
-
-        if (clipName != animName || enforcementPlay)
-        {
-            //Debug.Log(clipName);
-            animator.Play(animName);
-        }
-        if(clipName == null)
-        {
-            animator.Play(animName);
-        }
-    }
-
-    //Action Anim_Walk = () => { };   中括弧で複数命令が書けるラムダ式voidだとこう  ALT+Enter
-    void Anim_Walk() { Anim_Action("Walk"); moveState = KirbyState.Walk; }
-    void Anim_Dash() { Anim_Action("Dash"); moveState = KirbyState.Dash; }
-    void Anim_Dash_Stop() { Anim_Action("DashStop"); moveState = KirbyState.Dash_Stop; }
-    public void Anim_Idle() { Anim_Action("Idle"); moveState = KirbyState.Idle; }
-    void Anim_Jump_Start() { Anim_Action("Jump_Start");  moveState = KirbyState.Jump_Start; }
-    void Anim_Jump_Falling() { Anim_Action("Jump_Falling"); moveState = KirbyState.Jump_Falling; }
-    void Anim_Jump_StartFall() { Anim_Action("Jump_StartFall"); moveState = KirbyState.Jump_StartFall; }
-    public void Anim_Jump_FloatFalling() { Anim_Action("Jump_FloatFalling"); moveState = KirbyState.Jump_FloatFalling;}
-    void Anim_Jump_FloatEndFalling() { Anim_Action("Jump_FloatEndFalling "); moveState = KirbyState.Jump_FloatEndFalling; }
-    void Anim_Floating_Start() { Anim_Action("Floating_Start"); moveState = KirbyState.Floating_Start; }
-    public void Anim_DoorExit() { Anim_Action("DoorExit"); moveState = KirbyState.DoorExit; }
-    //浮遊中の手パタパタのアニメーション
-    void Anim_FloatJump() { Anim_Action("Jump_FloatJump"); moveState = KirbyState.Jump_FloatJump; }
-    void Anim_Floating_End() { Anim_Action("Floating_End"); moveState = KirbyState.Floating_End; }
-
-    //void Anim_Jump() => animator.SetBool("jumping", isGround && Input.GetButtonDown("Jump"));
-    void Anim_Float() => animator.SetBool("floating", floating);
-
-    void Animation()
-    {
-        //animator.SetBool("isGround", isGround);
-        //animator.SetBool("floating", floating);
-        //animator.SetBool("jumping", isGround && Input.GetButtonDown("Jump"));
-        //animator.SetBool("Walk", isWalking);
-    }
-
-
     StopWatch stopWatch;
+
     void Start()
     {
         moveable = true;
         AS = GetComponent<AudioSource>();
-        tl = GetComponent<TrailRenderer>();
+        ho = GetComponent<HitableOBJ>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         stopWatch = GetComponent<StopWatch>();
         kirbyAtaks = GetComponent<KirbyAtacks>();
+        controlList = GetComponent<ControlList>();
+        Application.targetFrameRate = 60;
     }
 
     void Update()
@@ -168,13 +110,10 @@ public class KirbyMove : MonoBehaviour
         h = moveable ? Input.GetAxisRaw("Horizontal") : 0f;
         v = moveable ? Input.GetAxisRaw("Vertical") : 0f;
 
-        //Jump(tempVelisityX);
-
-        //RaycastHit2D isWall = Physics2D.CircleCast(transform.position, 0.5f, new Vector2(h, 0), 0.3f, wall);
-
         //移動系の処理は攻撃中には行わないつもり
-        if (kirbyAtaks.GetAtacking() == false　&& !kirbyAtaks.GetAtacking())
+        if (kirbyAtaks.GetAtacking() == false　&& !kirbyAtaks.GetAtacking() && !ho.GetHit())
         {
+            //Debug.Log("moveable");
             AtackMethod();
             FlipHorizontal(h);
             Jump();
@@ -182,41 +121,78 @@ public class KirbyMove : MonoBehaviour
             MoveHorizontal(h, tempVeloisityY, isGround);
             ReduceFallSpeed(rb);
 
-        }   
+        }
+
+        DownAnimation();
 
     }
+
+    void DownAnimation()
+    {
+        if (ho.GetHit())
+        {
+            //Debug.Log("moveable");
+            if (!isGround && moveState != KirbyState.KirbyDamage_Start)
+            {
+                Anim_Damage_Start();
+            }
+            else if (isGround)
+            {
+                Vector3 currentVelosity = rb.velocity;  currentVelosity.x = 0f;
+                rb.velocity = currentVelosity;
+                if (moveState != KirbyState.Down && ho.GetDownFrag())
+                {
+                    Debug.LogWarning(ho.GetDownFrag() + "Down");
+                    Anim_Down();
+                }
+            }
+            
+        }
+        else if(moveState == KirbyState.Down || moveState == KirbyState.KirbyDamage_Start)
+        {
+            Anim_Idle();
+        }
+    }
+
+    bool IsWalking(float axisH) => Mathf.Abs(axisH) != 0 && moveState != KirbyState.Walk && moveState != KirbyState.Jump_Start
+            && moveState != KirbyState.Floating_End && moveState != KirbyState.Dash && isGround;
 
 
     private void MoveHorizontal(float axisH, float tempVelisityY, bool isGround)
     {
-
-        if (isGround)//      地上
+        //地上に立っている時のアニメーション処理
+        if (!isGround)
         {
-            if (Mathf.Abs(axisH) != 0 && moveState != KirbyState.Walk && moveState != KirbyState.Jump_Start
-                && moveState != KirbyState.Floating_End && moveState != KirbyState.Dash)
-            {
-                //SoundsManager.SE_Play(SE.OnLand);
-                Anim_Walk();
-                //Debug.Log("歩き");
-            }
-            else if (moveState == KirbyState.Jump_FloatFalling || moveState == KirbyState.Jump_FloatJump
-                || moveState == KirbyState.Floating_Start)
-            {
-                Breath();
-            }
-            else if ((moveState == KirbyState.Walk)
-                && Mathf.Abs(axisH) == 0)
-            {
-                //|| moveState == KirbyState.Floating_End
-                Anim_Idle();
-            }
+           goto Anim_1_end;　//Anim_1_end:が書かれている228行目に
+        }
+        if (IsWalking(axisH))
+        {
+            //SoundsManager.SE_Play(SE.OnLand);
+            Anim_Walk();
+            goto Anim_1_end;
+            //Debug.Log("歩き");
+        }
 
+        if (moveState == KirbyState.Jump_FloatFalling || moveState == KirbyState.Jump_FloatJump
+            || moveState == KirbyState.Floating_Start)
+        {
+            Breath();
+            goto Anim_1_end;
+        }
+
+        if ((moveState == KirbyState.Walk)
+            && Mathf.Abs(axisH) == 0 && !ho.GetHit())
+        {
+            //|| moveState == KirbyState.Floating_End
+            Anim_Idle();
+            goto Anim_1_end;
         }
         else//    空中
         {
             //膨らんで無かったら通常のにする
         }
 
+    Anim_1_end:
 
         //moveX = axisH * 10;
 
@@ -226,7 +202,7 @@ public class KirbyMove : MonoBehaviour
         //Vector2 move = new Vector2(moveX, 0); //最終的な動き
         Vector2 move = new Vector2(moveX, tempVelisityY); //最終的な動き
 
-        if (isGround && Input.GetButton("Dash"))
+        if (isGround && (controlList.Dash_Left() || controlList.Dash_Right() || moveState == KirbyState.Dash) )
         {
 
             if (moveState != KirbyState.Jump_Start)
@@ -239,10 +215,11 @@ public class KirbyMove : MonoBehaviour
             else
             { move.x = -dashSpeed; }
 
-            //move.y = 0.0f;
+            Debug.Log(move.x);
+
         }
 
-        if (Input.GetButtonUp("Dash") && isGround)   //地面に立っているとき限定
+        if (axisH == 0 && isGround && moveState == KirbyState.Dash)   //地面に立っているとき限定
         {
             Anim_Dash_Stop();
         }
@@ -292,7 +269,7 @@ public class KirbyMove : MonoBehaviour
         {
             Anim_Jump_StartFall();
         }
-        if (isGround)
+        if (isGround && !ho.GetHit())
         {
             Anim_Idle();
         }
@@ -385,8 +362,9 @@ public class KirbyMove : MonoBehaviour
             rb.velocity = new Vector2(tempVelisityX, floatjumpForce);
             SoundsManager.SE_Play(SE.fly);
             floating = true;
-            if(moveState == KirbyState.While_floating || moveState == KirbyState.Floating_Start
+            if ((moveState == KirbyState.While_floating || moveState == KirbyState.Floating_Start
                  || moveState == KirbyState.Jump_FloatFalling || moveState == KirbyState.Jump_FloatJump)
+                 && !ho.GetHit())
             {
                 //同じアニメーション再生させてもループしないので落下中のアニメーションを挟まないといけない
                 Anim_FloatJump();
@@ -397,14 +375,14 @@ public class KirbyMove : MonoBehaviour
 
         if(!isGround && Mathf.Abs(rb.velocity.y) <= 0.5 
             && moveState != KirbyState.While_floating && moveState != KirbyState.Floating_End
-            && !floating)
+            && !floating && !ho.GetHit())
         {
             Anim_Jump_StartFall();
             return;
         }
 
 
-        if ( isGround && moveState == KirbyState.Jump_StartFall)
+        if ( isGround && moveState == KirbyState.Jump_StartFall && !ho.GetHit())
         { Anim_Idle();  return; }
     }
 

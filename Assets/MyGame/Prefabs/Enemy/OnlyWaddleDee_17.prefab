@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6299250229111345389}
   - component: {fileID: 5805678099162448303}
   - component: {fileID: 3168280111822538641}
-  - component: {fileID: 7994132224081626007}
   - component: {fileID: 2361307074808208651}
   - component: {fileID: 5227180171618080428}
   - component: {fileID: 3667688472613917345}
@@ -216,24 +215,9 @@ MonoBehaviour:
   playerorEnemy: 1
   maxHP: 10
   invincibleTime: 1
-  hitEffect: {fileID: 0}
-  debugLog: 0
---- !u!114 &7994132224081626007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5293308144904239425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b42bb9ef36a1994ba6325101ddb0af0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerorEnemy: 1
-  maxHP: 10
-  invincibleTime: 1
-  hitEffect: {fileID: 0}
+  downTime: 1.5
+  hitEffect: {fileID: 8750359777138825836, guid: 3fb799dc59af07149aef3f9bbb17cdb6, type: 3}
+  deathEffect: {fileID: 8750359777138825836, guid: 3fb799dc59af07149aef3f9bbb17cdb6, type: 3}
   debugLog: 0
 --- !u!114 &2361307074808208651
 MonoBehaviour:
@@ -276,7 +260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerorEnemy: 1
   damage: 10
-  knockback: 100
+  knockback: 5
+  down: 0
   collisionDestroy: 0
   roomCollisionIgnore: 0
   hit: 0
@@ -293,7 +278,7 @@ GameObject:
   - component: {fileID: 9077158855740027188}
   m_Layer: 10
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

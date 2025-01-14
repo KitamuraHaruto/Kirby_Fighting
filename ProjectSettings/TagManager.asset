@@ -9,6 +9,7 @@ TagManager:
   - Ashiba
   - CanBroke
   - EnemyAtack
+  - Enemy
   layers:
   - Default
   - TransparentFX

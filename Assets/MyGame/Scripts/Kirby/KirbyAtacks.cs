@@ -14,6 +14,7 @@ public class KirbyAtacks : MonoBehaviour
 
     Animator animator;Å@KirbyMove KirbyMove;
     Rigidbody2D rb;
+    HitableOBJ ho;
 
     [SerializeField] GameObject jabPrefab; 
     [SerializeField] GameObject hardPunchPrefab; 
@@ -21,6 +22,7 @@ public class KirbyAtacks : MonoBehaviour
 
     void Start()
     {
+        ho = GetComponent<HitableOBJ>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         KirbyMove = GetComponent<KirbyMove>();
@@ -29,7 +31,7 @@ public class KirbyAtacks : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetButtonDown("Atack") && !atack)
+        if(Input.GetButtonDown("Atack") && !atack && !ho.GetHit())
         {
             if (KirbyMove.GetIsground())
             {

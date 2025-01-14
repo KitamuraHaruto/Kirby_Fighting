@@ -1,0 +1,654 @@
+fileFormatVersion: 2
+guid: bed4b461c59c8c24ea662d1bcbede082
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 15
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Kirby_Effect_0
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 27
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1db30a21bb4eff540afea520fa95a112
+      internalID: 1947299801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_1
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 133
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48dacc92deed5864f932c08d262c7acf
+      internalID: -140844368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_2
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 136
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30fc29189d64db54aa70a4ca01829608
+      internalID: -1412870324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_4
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 141
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c8f14efefc08641b4ba532da019ae7
+      internalID: 71357408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_5
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 141
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37f31fa5c0240b44c8cfd5710937de76
+      internalID: 842609767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_6
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 143
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b2c98f46a3d264f87590d181226fa7
+      internalID: -1469053451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_7
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 143
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742589457728c864ca90f88ce94f0af3
+      internalID: -228751858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_14
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 80
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11549e562516a9946b1bdf64d4144cbf
+      internalID: -1119333700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_15
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 79
+        width: 48
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76afc170a5eb6ac4fb38b890dc514d9f
+      internalID: 1099357927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_24
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 82
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa175ec801827e349a0133d0da197b72
+      internalID: -1994852789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_25
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 79
+        width: 48
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2889dd3a59870214c941137a5de943d0
+      internalID: -1245839610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_62
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 24
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 486822bbf212ab1468ff7d425b884acd
+      internalID: -4216784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_63
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 23
+        width: 48
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6685db62d5ce5c4b8727801dc62f994
+      internalID: -234140994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_16
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 82
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc34f0f1eecf7f046a8589c6ff01f7aa
+      internalID: -529978045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_17
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 89
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a633f189175eef04aa38f0bec8907491
+      internalID: -1759035595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_18
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 90
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 344203c0a063d5141b12af99f98eb3cb
+      internalID: 567333703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_21
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 34
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d6896d9b340a09419f5a6717deb6c8b
+      internalID: 329433172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_20
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 34
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d5e3fe9843270449b763a405f947b7
+      internalID: 637284991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_19
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 83
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd858bb49456b7945bf9d2619a795383
+      internalID: 1279773284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_22
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 90
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10931dc7788bb6f479a46d329ce788d1
+      internalID: 1843499318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kirby_Effect_23
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 90
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fdf3aaef25e2bc41a83b8cdc04b0342
+      internalID: 1178111655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Kirby_Effect_0: 1947299801
+      Kirby_Effect_1: -140844368
+      Kirby_Effect_10: 477288037
+      Kirby_Effect_11: -458096597
+      Kirby_Effect_12: -400135854
+      Kirby_Effect_13: 771408150
+      Kirby_Effect_14: -1119333700
+      Kirby_Effect_15: 1099357927
+      Kirby_Effect_16: -529978045
+      Kirby_Effect_17: -1759035595
+      Kirby_Effect_18: 567333703
+      Kirby_Effect_19: 1279773284
+      Kirby_Effect_2: -1412870324
+      Kirby_Effect_20: 637284991
+      Kirby_Effect_21: 329433172
+      Kirby_Effect_22: 1843499318
+      Kirby_Effect_23: 1178111655
+      Kirby_Effect_24: -1994852789
+      Kirby_Effect_25: -1245839610
+      Kirby_Effect_26: -531602922
+      Kirby_Effect_27: 1566196976
+      Kirby_Effect_28: -695134454
+      Kirby_Effect_29: -1509161697
+      Kirby_Effect_3: 1149252996
+      Kirby_Effect_30: -1510501724
+      Kirby_Effect_31: -1590169960
+      Kirby_Effect_32: 1997022581
+      Kirby_Effect_33: 1444492698
+      Kirby_Effect_34: 1617508201
+      Kirby_Effect_35: 1712438498
+      Kirby_Effect_36: 1395617108
+      Kirby_Effect_37: -472910765
+      Kirby_Effect_38: -823627495
+      Kirby_Effect_39: -285608034
+      Kirby_Effect_4: 71357408
+      Kirby_Effect_40: -1659456422
+      Kirby_Effect_41: -101054739
+      Kirby_Effect_42: 779985967
+      Kirby_Effect_43: -71777379
+      Kirby_Effect_44: 352368119
+      Kirby_Effect_45: 1033674323
+      Kirby_Effect_46: -537008101
+      Kirby_Effect_47: -1438397608
+      Kirby_Effect_48: -1278097707
+      Kirby_Effect_49: -681879660
+      Kirby_Effect_5: 842609767
+      Kirby_Effect_50: -123922563
+      Kirby_Effect_51: 846718974
+      Kirby_Effect_52: -1917121117
+      Kirby_Effect_53: -1252410049
+      Kirby_Effect_54: -1014243297
+      Kirby_Effect_55: -112373291
+      Kirby_Effect_56: 1293829366
+      Kirby_Effect_57: -860513334
+      Kirby_Effect_58: 412609520
+      Kirby_Effect_59: -1395135929
+      Kirby_Effect_6: -1469053451
+      Kirby_Effect_60: -1652642908
+      Kirby_Effect_61: -1044153469
+      Kirby_Effect_62: -4216784
+      Kirby_Effect_63: -234140994
+      Kirby_Effect_64: 1206672869
+      Kirby_Effect_65: -1779953322
+      Kirby_Effect_66: 843635917
+      Kirby_Effect_67: -1234081343
+      Kirby_Effect_68: 429810661
+      Kirby_Effect_69: 2115143457
+      Kirby_Effect_7: -228751858
+      Kirby_Effect_70: -220642794
+      Kirby_Effect_71: -1871363545
+      Kirby_Effect_72: -702295048
+      Kirby_Effect_73: 366328234
+      Kirby_Effect_74: -1321697260
+      Kirby_Effect_75: 596162863
+      Kirby_Effect_76: 721793175
+      Kirby_Effect_77: 915330400
+      Kirby_Effect_78: 1432976639
+      Kirby_Effect_79: 124702702
+      Kirby_Effect_8: -802809595
+      Kirby_Effect_80: -1777857054
+      Kirby_Effect_81: 662439171
+      Kirby_Effect_82: 1128707760
+      Kirby_Effect_83: -1324394558
+      Kirby_Effect_84: -1951106307
+      Kirby_Effect_85: 891578027
+      Kirby_Effect_9: -60473605
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

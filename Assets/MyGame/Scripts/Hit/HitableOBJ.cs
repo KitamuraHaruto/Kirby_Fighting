@@ -14,7 +14,10 @@ public class HitableOBJ : MonoBehaviour
     [SerializeField] int maxHP = 100;
     [SerializeField] float invincibleTime = 1f;
 
+    [SerializeField] float downTime = 1.5f;
+
     [SerializeField] GameObject hitEffect;
+    [SerializeField] GameObject deathEffect;
 
     [SerializeField] bool debugLog = false;
 
@@ -33,6 +36,9 @@ public class HitableOBJ : MonoBehaviour
     bool ishit = false;
     public bool GetHit() => ishit;
 
+    bool downFrag = false;
+    public bool GetDownFrag() => downFrag;
+
     Rigidbody2D rb;
 
 
@@ -50,6 +56,7 @@ public class HitableOBJ : MonoBehaviour
 
     void Update()
     {
+        //rb.AddForce(new Vector2(1, 1), ForceMode2D.Impulse);
         //Debug.Log(rb.velocity);
 
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
@@ -62,14 +69,15 @@ public class HitableOBJ : MonoBehaviour
 
         if (currentHP <= 0)
         {
-            //Debug.Log("死にました");
+            Debug.Log("死にました");
             death = true;
             rb.velocity = Vector3.zero;
+
         }
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         AtackDamage AtackCol = collision.GetComponent<AtackDamage>();
 
@@ -79,44 +87,57 @@ public class HitableOBJ : MonoBehaviour
             //当たったものが敵のものだった場合
             if (AtackCol.GetPlayerorEnemy() == getAtackcol && damageable)
             {
-                //Debug.Log("Hit" + gameObject.name);
+                downFrag = AtackCol.Down();
+                //Debug.Log("AtackCol.Down = " + AtackCol.Down());
                 //ノックバック処理
                 Vector3 dir = collision.transform.position - transform.position;
                 dir.z = 0;
-                var aaa = KitamuraMethod.VectorReplaced2D(transform.forward, AtackCol.GetKnockback());
+                //var aaa = KitamuraMethod.VectorReplaced2D(dir, AtackCol.GetKnockback(),true);
+                var aaa = KitamuraMethod.VectorReplaced2D(transform.position, collision.transform.position
+                    , AtackCol.GetKnockback(),true);
                 //Debug.Log(aaa);
-                rb.AddForce(-aaa , ForceMode2D.Impulse);
-                //StartCoroutine(KnockBackCoroutine(aaa));
+                Debug.Log("Hit " + AtackCol.GetKnockback() + " " + aaa);
+                rb.AddForce(aaa, ForceMode2D.Impulse);
+                StartCoroutine(KnockBackCoroutine(aaa));
 
                 //ダメージ処理
-                if (AtackCol != null)
-                {
-                    currentHP -= AtackCol.GetDamage();
-                    //Debug.Log(currentHP);
-                    damageable = false;
-                    StartCoroutine(DamageFragCoroutine());
-                    HitEffect(collision.transform.position);
-                }
+                currentHP -= AtackCol.GetDamage();
+                //Debug.Log(currentHP);
+                damageable = false;
+                
+                HitEffect(collision.transform.position);
+                
             }
         }
-
     }
 
     IEnumerator KnockBackCoroutine(Vector3 vector)
     {
         ishit = true;
-        vector.y = 0;
+        //vector.y = 0;
         //rb.velocity += vector * 5;
-        rb.AddForce(vector * 5);
-        yield return new WaitForSeconds(0.1f);
+        //rb.AddForce(vector * 5);
+
+        if (downFrag)
+        {
+            yield return new WaitForSeconds(downTime);
+        }
+        else
+        {
+            yield return new WaitForSeconds(downTime / 3);
+        }
         rb.velocity = Vector3.zero;
         ishit = false;
+        StartCoroutine(DamageFragCoroutine());
     }
+
+
 
     IEnumerator DamageFragCoroutine()
     {
         yield return new WaitForSeconds(invincibleTime);
         damageable = true;
+        rb.velocity = Vector3.zero;
     }
 
     public void Healing(int hp)

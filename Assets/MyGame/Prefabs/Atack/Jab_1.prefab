@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6125511720625328263}
   - component: {fileID: -6048290539836546803}
   - component: {fileID: 7883984149971980624}
+  - component: {fileID: 3931989587489556705}
   m_Layer: 7
   m_Name: Jab_1
   m_TagString: Atack
@@ -195,3 +196,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3931989587489556705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5141211049869700690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b71c207f1759a46b11618468f05661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerorEnemy: 0
+  damage: 1
+  knockback: 3
+  down: 0
+  collisionDestroy: 0
+  roomCollisionIgnore: 0
+  hit: 0

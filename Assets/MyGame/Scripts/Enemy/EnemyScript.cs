@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public enum EnemyMethod
@@ -14,6 +15,7 @@ public partial class EnemyScript : MonoBehaviour
     public BoxCollider2D GetCol() => col;
 
     Rigidbody2D rb; StopWatch sw;
+    HitableOBJ ho; Animator animator;
 
     IEnemyMove enemyData;
 
@@ -22,24 +24,32 @@ public partial class EnemyScript : MonoBehaviour
 
     RaycastHit2D isGround;
 
+    //[HideInInspector] public bool isHit = false;
+
     /// <summary> ç°ì«Ç›çûÇÒÇ≈ÇÈactionDataÇÃî‘çÜ </summary>
     int currentDataNum = 0;
+
     /// <summary> ç°ì«Ç›çûÇÒÇ≈ÇÈactionDataÇÃèàóùÇèIÇ¶ÇƒÇÈÇ©Ç«Ç§Ç© </summary>
     bool moveDone = true;
 
+    /// <summary> actionDataÇÃèàóùÇçsÇ§Ç©Ç«Ç§Ç© </summary>
+    bool readMoveData = true;
+
     void Start()
     {
+        ho = GetComponent<HitableOBJ>();
         col = GetComponent<BoxCollider2D>();
         sw = GetComponent<StopWatch>();
         rb = GetComponent<Rigidbody2D>();
         enemyData = GetComponent<IEnemyMove>();
-
+        animator = GetComponent<Animator>();
     }
 
 
     void Update()
     {
         OnGroundSearch();
+        DownAnimation();
 
         //ç°Ç‚Ç¡ÇƒÇÈèàóùÇèIÇÌÇÁÇπÇƒÇ¢ÇΩÇÁ
         if (moveDone)
@@ -49,16 +59,46 @@ public partial class EnemyScript : MonoBehaviour
 
     }
 
+    public void DownAnimation()
+    {
+        if (ho.GetHit())
+        {
+            Debug.Log("Hit");
+            if (!isGround)
+            {
+                Anim_Damage_Start();
+                //animator.Play("Damage_Start");
+            }
+            else if (isGround)
+            {
+                Vector3 currentVelosity = rb.velocity; currentVelosity.x = 0f;
+                rb.velocity = currentVelosity;
+                if (moveState != EnemyState.Down)
+                {
+                    Anim_Down();
+                }
+            }
+
+        }
+        else if (moveState == EnemyState.Down || moveState == EnemyState.Damage_Start)
+        {
+            Anim_Idle();
+        }
+    }
+
+
     /// <summary>
     /// 
     /// </summary>
     void ReadMoveData()
     {
-        moveDone = false;
+        if (readMoveData)
+        {
+            moveDone = false;
             switch (enemyData.actionData()[currentDataNum].method)
             {
                 case EnemyMethod.Walk:
-                    StartCoroutine(Walk(enemyData.actionData()[currentDataNum],enemyData.Movespeed()));
+                    StartCoroutine(Walk(enemyData.actionData()[currentDataNum], enemyData.Movespeed()));
                     break;
 
                 case EnemyMethod.Jump:
@@ -68,18 +108,18 @@ public partial class EnemyScript : MonoBehaviour
                 case EnemyMethod.Atack:
                     break;
 
-                    case EnemyMethod.Away:
+                case EnemyMethod.Away:
                     break;
 
-                    case EnemyMethod.Frip:
+                case EnemyMethod.Frip:
                     Frip();
                     break;
 
             }
 
-        currentDataNum++;
-        currentDataNum = currentDataNum % enemyData.actionData().Count;
-
+            currentDataNum++;
+            currentDataNum = currentDataNum % enemyData.actionData().Count;
+        }
     }
 
 
@@ -94,6 +134,7 @@ public partial class EnemyScript : MonoBehaviour
 
     IEnumerator Walk(EnemyAction actionData, float speed)
     {
+        Anim_Walk();
         Vector2 dir = new Vector2(speed * transform.localScale.x, rb.velocity.y);
         rb.velocity = dir;
         //Debug.Log(rb.velocity);
@@ -105,6 +146,7 @@ public partial class EnemyScript : MonoBehaviour
     {
         if (isGround)
         {
+            
             Vector2 Force = new Vector2(0, jumpForce);
             rb.velocity = Force;
         }
