@@ -1984,6 +1984,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3168280111822538641, guid: 5ce8effe1a2b2ae4ba04c297213b16da, type: 3}
+      propertyPath: downTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5293308144904239425, guid: 5ce8effe1a2b2ae4ba04c297213b16da, type: 3}
       propertyPath: m_Name
       value: OnlyWaddleDee_17 (1)
@@ -2867,58 +2871,6 @@ Transform:
   - {fileID: 478768791}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1313643165 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7956913042947990030, guid: 940f9c27149963540a8b287d8f8e4e45, type: 3}
-  m_PrefabInstance: {fileID: 6621683055171805182}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1313643173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313643165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d8606fa0d0e24b4e9f763267c7fb58d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jabPrefab: {fileID: 5141211049869700690, guid: dd6a9dec4dce1f148989c4a137a334b4, type: 3}
-  hardPunchPrefab: {fileID: 9163132693906974756, guid: 49525adb6255eff488c390be88874db7, type: 3}
-  tonoriSpeed: 4
---- !u!114 &1313643181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313643165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b42bb9ef36a1994ba6325101ddb0af0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerorEnemy: 0
-  maxHP: 1000000000
-  invincibleTime: 3
-  downTime: 2
-  hitEffect: {fileID: 0}
-  deathEffect: {fileID: 0}
-  debugLog: 0
---- !u!114 &1313643189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313643165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d592e297409e44f459c3d22781c986df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  postponementFlame: 15
 --- !u!1 &1360497214
 GameObject:
   m_ObjectHideFlags: 0
@@ -4459,43 +4411,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5268295940914331158, guid: 940f9c27149963540a8b287d8f8e4e45, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036857436523399610, guid: 940f9c27149963540a8b287d8f8e4e45, type: 3}
-      propertyPath: dashSpeed
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036857436523399610, guid: 940f9c27149963540a8b287d8f8e4e45, type: 3}
-      propertyPath: moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7816021200807562314, guid: 940f9c27149963540a8b287d8f8e4e45, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7956913042947990030, guid: 940f9c27149963540a8b287d8f8e4e45, type: 3}
       propertyPath: m_Name
       value: KirbyTest
       objectReference: {fileID: 0}
-    - target: {fileID: 7956913042947990030, guid: 940f9c27149963540a8b287d8f8e4e45, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7956913042947990030, guid: 940f9c27149963540a8b287d8f8e4e45, type: 3}
-      insertIndex: 6
-      addedObject: {fileID: 1313643181}
-    - targetCorrespondingSourceObject: {fileID: 7956913042947990030, guid: 940f9c27149963540a8b287d8f8e4e45, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1313643189}
-    - targetCorrespondingSourceObject: {fileID: 7956913042947990030, guid: 940f9c27149963540a8b287d8f8e4e45, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1313643173}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 940f9c27149963540a8b287d8f8e4e45, type: 3}
 --- !u!1 &6626526325226043451 stripped
 GameObject:

@@ -9,6 +9,8 @@ public class Door : MonoBehaviour
     GameObject player;
     KirbyMove kirby;
 
+    [SerializeField] string sceneName;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -20,6 +22,7 @@ public class Door : MonoBehaviour
         if (enterFrag && kirby.InputV() == 1)
         {
             Debug.Log("•”‰®ˆÚ“®");
+            
         }
     }
 
@@ -29,6 +32,7 @@ public class Door : MonoBehaviour
         {
             //Debug.LogWarning("enter");
             enterFrag = true;
+
         }
     }
 

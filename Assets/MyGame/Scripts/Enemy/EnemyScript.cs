@@ -82,7 +82,8 @@ public partial class EnemyScript : MonoBehaviour
         }
         else if (moveState == EnemyState.Down || moveState == EnemyState.Damage_Start)
         {
-            Anim_Idle();
+            //Anim_Idle();
+            //Anim_Down();
         }
     }
 

@@ -18,10 +18,12 @@ public class KirbyAtacks : MonoBehaviour
 
     [SerializeField] GameObject jabPrefab; 
     [SerializeField] GameObject hardPunchPrefab; 
+    [SerializeField] GameObject tonoriHitBox; 
     [SerializeField] float tonoriSpeed = 4f;
 
     void Start()
     {
+        tonoriHitBox.SetActive(false);
         ho = GetComponent<HitableOBJ>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -50,14 +52,17 @@ public class KirbyAtacks : MonoBehaviour
         atack = true;
         StartCoroutine(KoutyokuCoroutine(0.2f));
         Anim_Action("Jab", true);
+        SoundsManager.SE_Play(SE.Punch);
         LaunchOBJ(jabPrefab);
     }
 
     void Tonori_Kick()
     {
+        tonoriHitBox.SetActive(true);
         atack = true;
         tonori = true;
         rb.velocity = new Vector3(tonoriSpeed * transform.localScale.x,-tonoriSpeed * 2,0);
+        SoundsManager .SE_Play(SE.Kick);
         Anim_Action("Tonori", true);
 
     }
@@ -67,6 +72,7 @@ public class KirbyAtacks : MonoBehaviour
         //とんおり攻撃をして地面とかオブジェクトに当たった時の処理
         if (tonori)
         {
+            tonoriHitBox.SetActive(false);
             atack = false;
             tonori = false;
             KirbyMove.Anim_Idle();
@@ -76,6 +82,8 @@ public class KirbyAtacks : MonoBehaviour
 
     void Atack_HardPunch()
     {
+        SoundsManager.SE_Play(SE.HardPunch);
+
         string animationName = "";
 
         if (KirbyMove.GetIsground())

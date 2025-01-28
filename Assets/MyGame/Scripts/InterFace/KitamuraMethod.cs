@@ -119,4 +119,16 @@ public static class KitamuraMethod
         }
     }
 
+
+    public static void FadeOut(GameObject blackScreen)
+    {
+
+    }
+
+
+    public static IEnumerator FadeOutCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+    }
+
 }

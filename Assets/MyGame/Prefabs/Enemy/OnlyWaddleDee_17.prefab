@@ -215,7 +215,7 @@ MonoBehaviour:
   playerorEnemy: 1
   maxHP: 10
   invincibleTime: 1
-  downTime: 1.5
+  downTime: 0.5
   hitEffect: {fileID: 8750359777138825836, guid: 3fb799dc59af07149aef3f9bbb17cdb6, type: 3}
   deathEffect: {fileID: 8750359777138825836, guid: 3fb799dc59af07149aef3f9bbb17cdb6, type: 3}
   debugLog: 0

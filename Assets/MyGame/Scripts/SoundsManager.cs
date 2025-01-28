@@ -11,6 +11,10 @@ public enum SE
     OnLand,
     flyspit,
     fly,
+    HardPunch,
+    Punch,
+    PunchHit,
+    Kick,
 }
 public class SoundsManager : MonoBehaviour
 {
@@ -32,6 +36,10 @@ public class SoundsManager : MonoBehaviour
         SE_LoadSet(SE.punch, folder + "punch");
         SE_LoadSet(SE.flyspit, folder + "fly-spit");
         SE_LoadSet(SE.fly, folder + "fly");
+        SE_LoadSet(SE.Punch, folder + "punch-rapid");
+        SE_LoadSet(SE.PunchHit, folder + "punch");
+        SE_LoadSet(SE.HardPunch, folder + "beam-charged");
+        SE_LoadSet(SE.Kick, folder + "hit1");
 
     }
 

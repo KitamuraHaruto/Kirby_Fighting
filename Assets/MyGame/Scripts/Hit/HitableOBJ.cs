@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public enum PlayerorEnemy
 {
@@ -70,8 +71,10 @@ public class HitableOBJ : MonoBehaviour
         if (currentHP <= 0)
         {
             Debug.Log("死にました");
-            death = true;
+            
             rb.velocity = Vector3.zero;
+
+            DeathMethod();
 
         }
     }
@@ -87,6 +90,8 @@ public class HitableOBJ : MonoBehaviour
             //当たったものが敵のものだった場合
             if (AtackCol.GetPlayerorEnemy() == getAtackcol && damageable)
             {
+                SoundsManager.SE_Play(SE.punch);
+
                 downFrag = AtackCol.Down();
                 //Debug.Log("AtackCol.Down = " + AtackCol.Down());
                 //ノックバック処理
@@ -168,6 +173,24 @@ public class HitableOBJ : MonoBehaviour
         {
             Instantiate(hitEffect, pos, transform.rotation);
         }
+    }
+
+
+    void DeathMethod()
+    {
+        if(playerorEnemy == PlayerorEnemy.player)
+        {
+            death = true;
+            Instantiate(deathEffect, transform.position, transform.rotation);
+        }
+
+        if(playerorEnemy == PlayerorEnemy.enemy && death == false)
+        {
+            death = true;
+            Instantiate(deathEffect, transform.position, transform.rotation);
+            Destroy(gameObject,0.5f );
+        }
+
     }
 
 }
