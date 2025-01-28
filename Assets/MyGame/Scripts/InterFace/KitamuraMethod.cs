@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public static class KitamuraMethod 
@@ -120,15 +122,64 @@ public static class KitamuraMethod
     }
 
 
-    public static void FadeOut(GameObject blackScreen)
+    public static IEnumerator FadeOut(Image blackScreen, float fadeTime)
     {
+
+        //経過時間
+        float elapsedTime = 0;
+
+        //フェードアウトさせるImageの色を取得
+        Color fadeColor = blackScreen.color;
+
+        //経過時間がフェードアウト時間に達するまでループ
+        while (elapsedTime < fadeTime)
+        {
+            //経過時間の更新
+            elapsedTime += Time.deltaTime;
+
+            //Alpha値(透明度)を更新
+            fadeColor.a = Mathf.Clamp01(elapsedTime / fadeTime);
+
+            //更新された色をImageに適用
+            blackScreen.color = fadeColor;
+
+            //次のフレームまで一時停止
+            yield return null;
+        }
+
+    }
+
+    public static IEnumerator FadeOutSceneChange(Image blackScreen, float fadeTime, string sceneName)
+    {
+
+        //経過時間
+        float elapsedTime = 0;
+
+        //フェードアウトさせるImageの色を取得
+        Color fadeColor = blackScreen.color;
+
+        //経過時間がフェードアウト時間に達するまでループ
+        while (elapsedTime < fadeTime)
+        {
+            //経過時間の更新
+            elapsedTime += Time.deltaTime;
+
+            //Alpha値(透明度)を更新
+            fadeColor.a = Mathf.Clamp01(elapsedTime / fadeTime);
+
+            //更新された色をImageに適用
+            blackScreen.color = fadeColor;
+
+            //次のフレームまで一時停止
+            yield return null;
+        }
+
+        //フェードアウトの処理が終わったらシーンを切り替える
+        SceneManager.LoadScene(sceneName);
 
     }
 
 
-    public static IEnumerator FadeOutCoroutine()
-    {
-        yield return new WaitForSeconds(1);
-    }
+
 
 }
