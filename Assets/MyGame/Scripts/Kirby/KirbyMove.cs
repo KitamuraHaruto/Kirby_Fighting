@@ -100,7 +100,17 @@ public partial class KirbyMove : MonoBehaviour
         kirbyAtaks = GetComponent<KirbyAtacks>();
         controlList = GetComponent<ControlList>();
         Application.targetFrameRate = 60;
+
+        //StartCoroutine(moveableCoroutine());
     }
+
+    IEnumerator moveableCoroutine()
+    {
+        moveable = false;
+        yield return new WaitForSeconds(0.1f);
+        moveable = true;
+    }
+
 
     void Update()
     {

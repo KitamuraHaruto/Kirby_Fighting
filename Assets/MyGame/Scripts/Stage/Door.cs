@@ -25,6 +25,7 @@ public class Door : MonoBehaviour
         if (enterFrag && kirby.InputV() == 1)
         {
             Debug.Log("•”‰®ˆÚ“®");
+            DoorExit();
             StartCoroutine(KitamuraMethod.FadeOutSceneChange(blackScreen, fadeTime, sceneName));
         }
     }

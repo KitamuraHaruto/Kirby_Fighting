@@ -12,17 +12,34 @@ public class ControlList : MonoBehaviour
 
     [SerializeField] int postponementFlame = 15;
 
+    bool recordFrag = false;
+
     //public List<GamePadClass> InputList() => inputList;
+
+    //private void Awake()
+    //{
+    //    InputRecord();
+    //}
 
     void Start()
     {
-
+        //InputRecord();
+        StartCoroutine(moveableCoroutine());
     }
+
+    IEnumerator moveableCoroutine()
+    {
+        recordFrag = false;
+        yield return new WaitForSeconds(0.1f);
+        recordFrag = true;
+    }
+
 
 
     void Update()
     {
         InputRecord();
+        //Debug.Log(inputList.Count);
     }
 
 
@@ -36,6 +53,12 @@ public class ControlList : MonoBehaviour
     /// <returns>二回押しの動作を検出出来たらtrueを返す</returns>
     bool DashFrag(LeftorRight leftorRight)
     {
+        if (!recordFrag)
+        {
+            Debug.Log("srefweraeraeraeregr");
+            return false;
+        }
+
         var currentInput = inputList[0];
 
         //Debug.Log(currentInput.movekey);
@@ -52,6 +75,8 @@ public class ControlList : MonoBehaviour
 
         //二回押しの際の一回ボタンを離した操作を検知する
         bool check = false;
+
+
 
         for (int i = 1; postponementFlame > i; i++)
         {

@@ -149,8 +149,18 @@ public static class KitamuraMethod
 
     }
 
+    /// <summary>
+    /// フェードアウトと同時にシーンを変更する。プレイヤーの動きも制限される。
+    /// </summary>
+    /// <param name="blackScreen"></param>
+    /// <param name="fadeTime"></param>
+    /// <param name="sceneName"></param>
+    /// <returns></returns>
     public static IEnumerator FadeOutSceneChange(Image blackScreen, float fadeTime, string sceneName)
     {
+        KirbyMove kirbyMove = FindPlayer().GetComponent<KirbyMove>();
+
+        kirbyMove.moveable = false;
 
         //経過時間
         float elapsedTime = 0;
@@ -176,6 +186,7 @@ public static class KitamuraMethod
 
         //フェードアウトの処理が終わったらシーンを切り替える
         SceneManager.LoadScene(sceneName);
+        kirbyMove.moveable = true;
 
     }
 
